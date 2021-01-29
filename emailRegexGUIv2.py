@@ -6,6 +6,7 @@ import re
 # https://stackoverflow.com/questions/55515627/pysimplegui-call-a-function-when-pressing-button
 # https://stackoverflow.com/questions/51455765/build-multiple-py-files-into-a-single-executable-file-using-pyinstaller
 
+# Build the regex
 emailRegex = re.compile(r'''(
     [a-zA-Z0-9._%+-]+ # username
     @                 # @ symbol
@@ -13,9 +14,7 @@ emailRegex = re.compile(r'''(
     (\.[a-zA-Z]{2,4})
     )''', re.VERBOSE)
 
-# Find matches in the clipboard text
-
-
+# Create the GUI
 layout = [[sg.Button('Run'), sg.Exit()] ]
 
 window = sg.Window('ORIGINAL').Layout(layout)
@@ -25,6 +24,7 @@ while True:             # Event Loop
     if event in (None, 'Exit'):
         break
     if event == 'Run':
+        # Find matches in the clipboard text
         text = str(pyperclip.paste())
         matches = []
         for groups in emailRegex.findall(text):
