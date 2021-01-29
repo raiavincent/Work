@@ -1,7 +1,5 @@
 import pyperclip, re
 
-# okay so I made this a while loop and it ran continuously good night
-
 # Create email regex.
 emailRegex = re.compile(r'''(
     [a-zA-Z0-9._%+-]+ # username
