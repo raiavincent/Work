@@ -14,7 +14,7 @@ emailRegex = re.compile(r'''(
     )''', re.VERBOSE)
 
 # Find matches in the clipboard text
-text = str(pyperclip.paste())
+
 
 layout = [[sg.Button('Run'), sg.Exit()] ]
 
@@ -25,6 +25,7 @@ while True:             # Event Loop
     if event in (None, 'Exit'):
         break
     if event == 'Run':
+        text = str(pyperclip.paste())
         matches = []
         for groups in emailRegex.findall(text):
             matches.append(groups[0])
